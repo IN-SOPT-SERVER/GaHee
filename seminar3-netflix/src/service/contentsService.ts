@@ -3,11 +3,14 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+
+//모든 시리즈 갖고오기 
 const getAllContents = async() => {
     const data = await prisma.movie.findMany();
     return data;
 }
 
+//오리지널 시리즈만 갖고오기 
 const getOriginalSeries = async() => {
     const data = await prisma.movie.findMany({
         where: {
@@ -19,7 +22,7 @@ const getOriginalSeries = async() => {
     return data;
 }
 
-
+//콘텐츠 생성 
 const createContents = async(contentsCreateDto:ContentsCreateDTO) => {
     const data = await prisma.movie.create({
         data:{   
