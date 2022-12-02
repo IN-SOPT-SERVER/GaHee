@@ -13,8 +13,6 @@ app.use(express.json()); // express 에서 request body를 json 으로 받아오
 
 
 app.use("/video", require("./video")); // use -> 모든 요청
-// localhost:8000/api -> api 폴더
-// localhost:8000/api/user -> user.ts
 
 
 //* HTTP method - GET
