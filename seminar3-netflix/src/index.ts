@@ -9,11 +9,6 @@ app.use(express.json()); // express 에서 request body를 json 으로 받아오
 app.use("/api", router); // use -> 모든 요청
 
 
-//* HTTP method - GET
-app.get("/", (req: Request, res: Response, next: NextFunction) => {
-  res.send("마! 이게 서버다!!!!!!!!!!!!!!!!!!!!");
-});
-
 app.listen(PORT, () => {
   console.log(`
         #############################################
