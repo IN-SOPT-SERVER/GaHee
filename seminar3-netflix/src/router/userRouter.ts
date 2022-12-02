@@ -15,6 +15,7 @@ router.get("/",auth,userController.getUser);
 
 router.post(
   "/signin",
+  auth,
   [
     body("email").notEmpty(),
     body("email").isEmail(),

@@ -79,6 +79,5 @@ const userController = {
     createUser,
     getUser,
     signInUser
-    
 }
 export default userController;
