@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { contentsService } from "../service";
-import { ContentsCreateDTO } from "../interfaces/ContentsCreateDTO";
+import { ContentsCreateDTO } from "../interfaces/common/ContentsCreateDTO";
 
 const getAllContents = async(req: Request, res: Response)=> {
     const data = await contentsService.getAllContents();

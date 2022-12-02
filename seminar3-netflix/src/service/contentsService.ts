@@ -1,4 +1,4 @@
-import { ContentsCreateDTO } from './../interfaces/ContentsCreateDTO';
+import { ContentsCreateDTO } from '../interfaces/common/ContentsCreateDTO';
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();

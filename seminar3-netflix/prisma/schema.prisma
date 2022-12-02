@@ -19,3 +19,11 @@ model movie {
   isLiked      Boolean?
   isHave       Boolean?
 }
+
+model User {
+  id       Int     @id @default(autoincrement())
+  name     String  @db.VarChar(300)
+  password String  @db.VarChar(300)
+  age      Int?
+  email    String? @db.VarChar(300)
+}
