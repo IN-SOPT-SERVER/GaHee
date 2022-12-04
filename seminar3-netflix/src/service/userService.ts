@@ -47,10 +47,69 @@ const getUser = async() => {
     return await prisma.user.findMany();
 }
 
+const getUserById =async (userId:number) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+  return user;
+}
+
+//* - 이름으로 유저 조회 (query) , 키워드를 포함한 것 들 return
+const searchUserByName = async (keyword: string, option: string)=> {
+  //?유저 선착순 
+  if ( option === "desc"){
+    const data = await prisma.user.findMany({
+      where: {
+        name: {
+          contains: keyword,
+        },
+      },
+      orderBy: {
+        createdAt: 'desc',
+      }
+    });
+    return data;
+  }
+  
+  //유저 오래된 순 
+  if ( option === "asc"){
+    const data = await prisma.user.findMany({
+      where:{
+        name: {
+          contains: keyword,
+        },
+      },
+    orderBy: {
+      createdAt : 'asc'
+    }
+  });
+  return data
+  }
+
+  //? 이름을 오름 차순으로 정렬
+  if ( option === "nameDesc"){
+    const data = await prisma.user.findMany({
+      where: {
+        name: {
+          contains: keyword
+        }
+      },
+      orderBy: {
+        name : 'desc',
+      }
+    });
+    return data;
+  }
+}
+
 const userService = {
     createUser,
     getUser,
-    signIn
+    signIn,
+    getUserById,
+    searchUserByName,
 }
 
 export default userService;

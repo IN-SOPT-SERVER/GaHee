@@ -73,11 +73,39 @@ const getUser = async(req:Request, res:Response) =>{
     return res.status(200).json({ status: 200, message: "유저 전체 조회 성공", data });
 }
 
+//* 아이디로 유저 조회
+const getUserById = async(req: Request, res: Response)=>{
+  const {userId} = req.params;
+
+  const data = await userService.getUserById(+userId);
+
+  if(!data){
+    return res.status(sc.BAD_REQUEST).send(fail(sc.BAD_REQUEST,rm.BAD_REQUEST));
+  }
+  return res.status(sc.OK).send(success(sc.OK,rm.SEARCH_USER_SUCCESS,data));
+
+}
+
+//* GET ~/api/user?keyword=가희
+const searchUserByName = async(req: Request, res: Response) =>{
+  const {keyword, option} = req.query;
+
+  const data = await userService.searchUserByName(keyword as string, option as string);
+
+  if (!data){
+    return res.status(sc.BAD_REQUEST).send(fail(sc.BAD_REQUEST, rm.BAD_REQUEST));
+  }
+  return res.status(sc.OK).send(success(sc.OK, rm.SEARCH_USER_SUCCESS, data));
+
+} 
 
 
 const userController = {
     createUser,
     getUser,
-    signInUser
+    signInUser,
+    searchUserByName,
+    getUserById
+
 }
 export default userController;
