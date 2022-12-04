@@ -30,4 +30,9 @@ export default {
   
     // 서버 내 오류
     INTERNAL_SERVER_ERROR: "서버 내 오류",
+
+    //이미지
+    NO_IMAGE: "이미지가 없습니다",
+    CREATE_IMAGE_FAIL: "이미지 업로드 실패!",
+    CREATE_IMAGE_SUCCESS: "이미지 업로드 성공",
   };

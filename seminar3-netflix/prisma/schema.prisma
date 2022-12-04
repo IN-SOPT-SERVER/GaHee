@@ -27,3 +27,10 @@ model User {
   age      Int?
   email    String? @db.VarChar(300)
 }
+
+model Image {
+  id    Int     @id @default(autoincrement())
+  image String? @db.VarChar(800)
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+}
